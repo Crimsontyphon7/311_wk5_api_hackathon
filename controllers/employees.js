@@ -1,5 +1,5 @@
-// const mysql2 = require('mysql2');
-// const pool = require('../connections');
+const mysql2 = require('mysql2');
+const pool = require('../connections');
 // needs handleSQLError require
 
 
@@ -35,9 +35,9 @@ const getEmployeesByFirstName = (req, res) => {
     })
 }
 
-// module.exports = {
-    // getEmployees,
-    // getEmployeesById
-    // getEmployeesByFirstName
+module.exports = {
+    getEmployees,
+    getEmployeesById,
+    getEmployeesByFirstName
 
-// };
+};
