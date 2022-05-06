@@ -1,6 +1,6 @@
 // const mysql2 = require('mysql2');
-// const pool = require('../connections');
-// needs handleSQLError require
+// const pool = require('../mysql/connections');
+// const { handleSQLError } = require('../mysql/error')
 
 
 // Create a new folder called "controllers" and a new file called "employees.js". Export the controller and import it into the "routes/employees.js" file. This is where we will put all of the logic for interacting with the data
@@ -31,7 +31,7 @@ const getEmployeesById = (req, res) => {
 // Create a function called "getEmployeesByFirstName. It should select all fields from the employees table where the first_name matches the /:first_name query parameter"
 
 const getEmployeesByFirstName = (req, res) => {
-    pool.query("SELECT * FROM employees WHERE first_name = req.params.first_name", (err, rows) => {
+    pool.query(`SELECT * FROM employees WHERE first_name = ${req.params.first_name}`, (err, rows) => {
         if (err) return handleSQLError(res, err)
         return res.json(rows);
     })
