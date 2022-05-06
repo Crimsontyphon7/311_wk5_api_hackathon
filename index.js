@@ -1,11 +1,11 @@
 const express = require('express');
 const app = express();
+
 const employeesRouter = require('./routers/employees');
 const port = process.env.PORT || 4001;
 
 
-const usersRoutes = require("./routes/employees");
-app.use(usersRoutes);
+app.use(employeesRouter);
 
 app.get('/', (req, res) => {
     res.send('Welcome to our API!')
