@@ -1,6 +1,6 @@
-// const mysql2 = require('mysql2');
-// const pool = require('../mysql/connections');
-// const { handleSQLError } = require('../mysql/error')
+const mysql2 = require('mysql2');
+const pool = require('../connections');
+const { handleSQLError } = require('../mysql/error')
 
 
 // Create a new folder called "controllers" and a new file called "employees.js". Export the controller and import it into the "routes/employees.js" file. This is where we will put all of the logic for interacting with the data
@@ -37,9 +37,9 @@ const getEmployeesByFirstName = (req, res) => {
     })
 }
 
-// module.exports = {
-    // getEmployees,
-    // getEmployeesById
-    // getEmployeesByFirstName
+module.exports = {
+    getEmployees,
+    getEmployeesById,
+    getEmployeesByFirstName
 
-// };
+};

@@ -3,7 +3,8 @@ const app = express();
 const port = process.env.PORT || 4001;
 
 
-
+const usersRoutes = require("./routes/employees");
+app.use(usersRoutes);
 
 app.get('/', (req, res) => {
     res.send('Welcome to our API!')
