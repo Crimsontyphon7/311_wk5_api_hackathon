@@ -1,6 +1,6 @@
-// const mysql2 = require('mysql2');
-// const pool = require('../connections');
-// needs handleSQLError require
+const mysql2 = require('mysql2');
+const pool = require('../connections');
+const { handleSQLError } = require('../mysql/error')
 
 const getSalaries = (req, res) => {
     pool.query('SELECT * FROM employees JOIN salaries', (err, rows) => {
@@ -8,7 +8,7 @@ const getSalaries = (req, res) => {
         return res.json(rows);
     })
 } 
-// module.exports = {
-    // getSalaries
+module.exports = {
+    getSalaries
 
-// };
+};
