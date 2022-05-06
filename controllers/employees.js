@@ -7,7 +7,12 @@
 
 
 // Create a function in the controller called "getEmployees". It should be called by the default "/" route. For now, leave the logic the same: res.send("getting employees...")
+
+
+//Update the getEmployees function in the controller so that it calls the database, selecting all fields from the employees table but limiting the results to 50
 const getEmployees = (req, res) => {
+    let sql = `SELECT * FROM employees LIMIT 50`;
+    
     pool.query('SELECT * FROM employees', (err, rows) => {
         if (err) return handleSQLError(res, err)
         return res.json(rows);
@@ -15,8 +20,12 @@ const getEmployees = (req, res) => {
 } 
 
 // Create a function in the controller called "getEmployeesById". It should be called by the "/:id" route. For now, leave the logic the same: res.send("getting employees...")
+//Update the getEmployeesById function so that it calls the database, selecting all fields from the employees table where the emp_no matches the id query parameter
 
 const getEmployeesById = (req, res) => {
+    
+    let sql = `SELECT * FROM employees where emp_no=? LIMIT 1`;
+
     pool.query(`SELECT * FROM employees WHERE emp_no = ${req.params.id}`, (err, rows) => {
         if (err) return handleSQLError(res, err)
         return res.json(rows);
@@ -34,6 +43,8 @@ const getEmployeesByFirstName = (req, res) => {
         return res.json(rows);
     })
 }
+
+
 
 // module.exports = {
     // getEmployees,
