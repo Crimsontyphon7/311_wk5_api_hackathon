@@ -8,7 +8,7 @@ const { handleSQLError } = require('../mysql/error')
 
 // Create a function in the controller called "getEmployees". It should be called by the default "/" route. For now, leave the logic the same: res.send("getting employees...")
 const getEmployees = (req, res) => {
-    let sql = `SELECT * FROM employees LIMIT 50`;
+
     pool.query('SELECT * FROM employees LIMIT 50', (err, rows) => {
         if (err) return handleSQLError(res, err)
         return res.json(rows);
@@ -18,7 +18,7 @@ const getEmployees = (req, res) => {
 // Create a function in the controller called "getEmployeesById". It should be called by the "/:id" route. For now, leave the logic the same: res.send("getting employees...")
 
 const getEmployeesById = (req, res) => {
-    let sql = `SELECT * FROM Employees WHERE emp_no LIMIT 1`;
+
     pool.query(`SELECT * FROM employees WHERE emp_no = ${req.params.id}`, (err, rows) => {
         if (err) return handleSQLError(res, err)
         return res.json(rows);
